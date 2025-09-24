@@ -7,34 +7,38 @@ const Blog = () => {
   const blogPosts = [
     {
       title: "Understanding Anxiety: Signs, Symptoms, and Coping Strategies",
-      excerpt: "Learn to recognize anxiety symptoms and discover practical techniques to manage worry and stress in your daily life.",
+      excerpt:
+        "Learn to recognize anxiety symptoms and discover practical techniques to manage worry and stress in your daily life.",
       date: "2024-09-20",
       readTime: "5 min read",
       category: "Mental Health",
-      image: anxietyAwarenessImage
+      image: anxietyAwarenessImage,
     },
     {
       title: "Recognizing and Preventing Burnout",
-      excerpt: "Understand the warning signs of burnout and learn practical strategies to maintain your mental health in demanding situations.",
+      excerpt:
+        "Understand the warning signs of burnout and learn practical strategies to maintain your mental health in demanding situations.",
       date: "2024-09-15",
       readTime: "8 min read",
       category: "Workplace",
-      image: burnoutInfoImage
+      image: burnoutInfoImage,
     },
     {
       title: "Building Healthy Relationships: Communication Tips",
-      excerpt: "Learn effective communication strategies that can strengthen your relationships and create deeper connections.",
+      excerpt:
+        "Learn effective communication strategies that can strengthen your relationships and create deeper connections.",
       date: "2024-09-10",
       readTime: "6 min read",
-      category: "Relationships"
+      category: "Relationships",
     },
     {
       title: "The Importance of Self-Care in Mental Health",
-      excerpt: "Explore why self-care isn't selfish and discover simple practices that can significantly improve your mental wellbeing.",
+      excerpt:
+        "Explore why self-care isn't selfish and discover simple practices that can significantly improve your mental wellbeing.",
       date: "2024-09-05",
       readTime: "7 min read",
-      category: "Self-Care"
-    }
+      category: "Self-Care",
+    },
   ];
 
   return (
@@ -47,29 +51,29 @@ const Blog = () => {
               Mental Health Insights
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Evidence-based articles and practical tips to support your mental health journey 
-              and help you live a more fulfilling life.
+              Evidence-based articles and practical tips to support your mental
+              health journey and help you live a more fulfilling life.
             </p>
           </div>
 
           {/* Blog Posts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {blogPosts.map((post, index) => (
-              <article 
+              <article
                 key={index}
                 className="bg-gradient-card rounded-2xl overflow-hidden shadow-card hover:shadow-float transition-all duration-300 group cursor-pointer"
               >
                 {/* Image */}
                 {post.image && (
                   <div className="h-48 overflow-hidden">
-                    <img 
-                      src={post.image} 
+                    <img
+                      src={post.image}
                       alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 )}
-                
+
                 <div className="p-8">
                   {/* Category Badge */}
                   <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
@@ -103,7 +107,10 @@ const Blog = () => {
                   {/* Read More */}
                   <div className="flex items-center text-primary font-medium group-hover:text-primary-light transition-colors">
                     <span>Read More</span>
-                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight
+                      size={16}
+                      className="ml-2 group-hover:translate-x-1 transition-transform"
+                    />
                   </div>
                 </div>
               </article>
@@ -116,8 +123,8 @@ const Blog = () => {
               Stay Updated on Mental Health
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Subscribe to our newsletter for the latest mental health insights, tips, 
-              and resources delivered to your inbox monthly.
+              Subscribe to our newsletter for the latest mental health insights,
+              tips, and resources delivered to your inbox monthly.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input

@@ -1,46 +1,82 @@
 import { User, Users, Heart, Briefcase, Brain, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import therapySessionImage from "@/assets/therapy-session.jpg";
-import servicesBrochureImage from "@/assets/services-brochure.jpg";
+import servicesBrochureImage from "@/assets/services-overview.jpg";
 
 const Services = () => {
   const services = [
     {
       icon: User,
       title: "Individual Therapy",
-      description: "One-on-one sessions to address personal challenges, anxiety, depression, trauma, and personal growth.",
-      features: ["Personalized treatment plans", "Confidential sessions", "Evidence-based approaches", "Flexible scheduling"]
+      description:
+        "One-on-one sessions to address personal challenges, anxiety, depression, trauma, and personal growth.",
+      features: [
+        "Personalized treatment plans",
+        "Confidential sessions",
+        "Evidence-based approaches",
+        "Flexible scheduling",
+      ],
     },
     {
       icon: Heart,
       title: "Couples Therapy",
-      description: "Strengthen your relationship through improved communication, conflict resolution, and emotional connection.",
-      features: ["Communication skills", "Conflict resolution", "Intimacy building", "Relationship goals"]
+      description:
+        "Strengthen your relationship through improved communication, conflict resolution, and emotional connection.",
+      features: [
+        "Communication skills",
+        "Conflict resolution",
+        "Intimacy building",
+        "Relationship goals",
+      ],
     },
     {
       icon: Users,
       title: "Group Therapy",
-      description: "Connect with others facing similar challenges in a supportive group environment.",
-      features: ["Peer support", "Shared experiences", "Social skills", "Cost-effective"]
+      description:
+        "Connect with others facing similar challenges in a supportive group environment.",
+      features: [
+        "Peer support",
+        "Shared experiences",
+        "Social skills",
+        "Cost-effective",
+      ],
     },
     {
       icon: UserCheck,
       title: "Child Therapy",
-      description: "Specialized therapy for children and adolescents dealing with behavioral, emotional, or developmental challenges.",
-      features: ["Age-appropriate techniques", "Play therapy", "Family involvement", "School collaboration"]
+      description:
+        "Specialized therapy for children and adolescents dealing with behavioral, emotional, or developmental challenges.",
+      features: [
+        "Age-appropriate techniques",
+        "Play therapy",
+        "Family involvement",
+        "School collaboration",
+      ],
     },
     {
       icon: Briefcase,
       title: "Corporate Training",
-      description: "Mental health workshops and training programs for organizations to support employee wellbeing.",
-      features: ["Stress management", "Team building", "Leadership skills", "Workplace wellness"]
+      description:
+        "Mental health workshops and training programs for organizations to support employee wellbeing.",
+      features: [
+        "Stress management",
+        "Team building",
+        "Leadership skills",
+        "Workplace wellness",
+      ],
     },
     {
       icon: Brain,
       title: "Specialized Programs",
-      description: "Targeted programs for specific issues like addiction recovery, trauma healing, and anxiety management.",
-      features: ["Trauma-informed care", "Addiction support", "Anxiety management", "PTSD treatment"]
-    }
+      description:
+        "Targeted programs for specific issues like addiction recovery, trauma healing, and anxiety management.",
+      features: [
+        "Trauma-informed care",
+        "Addiction support",
+        "Anxiety management",
+        "PTSD treatment",
+      ],
+    },
   ];
 
   const scrollToBooking = () => {
@@ -60,25 +96,25 @@ const Services = () => {
               Our Services
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive mental health services tailored to meet your unique needs. 
-              We're here to support you every step of the way.
+              Comprehensive mental health services tailored to meet your unique
+              needs. We're here to support you every step of the way.
             </p>
           </div>
 
           {/* Services Images */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="rounded-2xl overflow-hidden shadow-card">
-              <img 
-                src={therapySessionImage} 
-                alt="Professional therapy session" 
-                className="w-full h-64 object-cover"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+            <div className="rounded-2xl overflow-hidden shadow-card h-80 flex items-center justify-center bg-gray-100">
+              <img
+                src={therapySessionImage}
+                alt="Professional therapy session"
+                className="max-h-full max-w-full object-contain"
               />
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-card">
-              <img 
-                src={servicesBrochureImage} 
-                alt="Greenoak Wellness Centre services" 
-                className="w-full h-64 object-cover"
+            <div className="rounded-2xl overflow-hidden shadow-card h-80 flex items-center justify-center bg-gray-100">
+              <img
+                src={servicesBrochureImage}
+                alt="Greenoak Wellness Centre services"
+                className="max-h-full max-w-full object-contain"
               />
             </div>
           </div>
@@ -88,7 +124,7 @@ const Services = () => {
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="bg-card rounded-2xl p-8 shadow-card hover:shadow-float transition-all duration-300 group"
                 >
@@ -108,7 +144,10 @@ const Services = () => {
                   {/* Features */}
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
+                      <li
+                        key={featureIndex}
+                        className="flex items-center text-sm text-muted-foreground"
+                      >
                         <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 flex-shrink-0"></div>
                         {feature}
                       </li>
@@ -116,7 +155,7 @@ const Services = () => {
                   </ul>
 
                   {/* CTA */}
-                  <Button 
+                  <Button
                     variant="outline"
                     onClick={scrollToBooking}
                     className="w-full border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all duration-200"
@@ -134,10 +173,10 @@ const Services = () => {
               Not Sure Which Service Is Right for You?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Book a consultation call and we'll help you determine the best approach 
-              for your specific needs and goals.
+              Book a consultation call and we'll help you determine the best
+              approach for your specific needs and goals.
             </p>
-            <Button 
+            <Button
               size="lg"
               onClick={scrollToBooking}
               className="bg-gradient-hero hover:opacity-90 px-8 py-4 text-lg font-semibold shadow-float"
