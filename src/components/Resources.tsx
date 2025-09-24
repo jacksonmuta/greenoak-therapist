@@ -1,7 +1,5 @@
 import { Download, ExternalLink, BookOpen, Video, Headphones, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import anxietyAwarenessImage from "@/assets/anxiety-awareness.jpg";
-import burnoutInfoImage from "@/assets/burnout-info.jpg";
 
 const Resources = () => {
   const resources = [
@@ -66,24 +64,6 @@ const Resources = () => {
               Free tools, guides, and resources to support your mental health journey. 
               These materials complement professional therapy and provide ongoing support.
             </p>
-          </div>
-
-          {/* Educational Images */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="rounded-2xl overflow-hidden shadow-card">
-              <img 
-                src={anxietyAwarenessImage} 
-                alt="Anxiety awareness and management information" 
-                className="w-full h-64 object-cover"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-card">
-              <img 
-                src={burnoutInfoImage} 
-                alt="Burnout prevention and management guide" 
-                className="w-full h-64 object-cover"
-              />
-            </div>
           </div>
 
           {/* Downloadable Resources */}

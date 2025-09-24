@@ -1,5 +1,4 @@
 import { Heart, Award, Users, Shield } from "lucide-react";
-import therapistImage from "@/assets/therapist-office.jpg";
 
 const About = () => {
   return (
@@ -18,17 +17,8 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-            {/* Therapist Image */}
-            <div className="lg:order-2">
-              <img 
-                src={therapistImage} 
-                alt="Professional therapist in consultation" 
-                className="w-full h-[400px] object-cover rounded-2xl shadow-card"
-              />
-            </div>
-
             {/* Content */}
-            <div className="space-y-6 lg:order-1">
+            <div className="space-y-6">
               <h3 className="font-heading text-2xl font-semibold text-primary">
                 Professional Mental Health Care
               </h3>
