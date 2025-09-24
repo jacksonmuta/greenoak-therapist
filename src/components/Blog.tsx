@@ -1,5 +1,7 @@
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import anxietyAwarenessImage from "@/assets/anxiety-awareness.jpg";
+import burnoutInfoImage from "@/assets/burnout-info.jpg";
 
 const Blog = () => {
   const blogPosts = [
@@ -8,14 +10,16 @@ const Blog = () => {
       excerpt: "Learn to recognize anxiety symptoms and discover practical techniques to manage worry and stress in your daily life.",
       date: "2024-09-20",
       readTime: "5 min read",
-      category: "Mental Health"
+      category: "Mental Health",
+      image: anxietyAwarenessImage
     },
     {
-      title: "The Importance of Self-Care in Mental Health",
-      excerpt: "Explore why self-care isn't selfish and discover simple practices that can significantly improve your mental wellbeing.",
+      title: "Recognizing and Preventing Burnout",
+      excerpt: "Understand the warning signs of burnout and learn practical strategies to maintain your mental health in demanding situations.",
       date: "2024-09-15",
-      readTime: "7 min read",
-      category: "Self-Care"
+      readTime: "8 min read",
+      category: "Workplace",
+      image: burnoutInfoImage
     },
     {
       title: "Building Healthy Relationships: Communication Tips",
@@ -25,11 +29,11 @@ const Blog = () => {
       category: "Relationships"
     },
     {
-      title: "Recognizing and Preventing Burnout",
-      excerpt: "Understand the warning signs of burnout and learn practical strategies to maintain your mental health in demanding situations.",
+      title: "The Importance of Self-Care in Mental Health",
+      excerpt: "Explore why self-care isn't selfish and discover simple practices that can significantly improve your mental wellbeing.",
       date: "2024-09-05",
-      readTime: "8 min read",
-      category: "Workplace"
+      readTime: "7 min read",
+      category: "Self-Care"
     }
   ];
 
@@ -53,41 +57,54 @@ const Blog = () => {
             {blogPosts.map((post, index) => (
               <article 
                 key={index}
-                className="bg-gradient-card rounded-2xl p-8 shadow-card hover:shadow-float transition-all duration-300 group cursor-pointer"
+                className="bg-gradient-card rounded-2xl overflow-hidden shadow-card hover:shadow-float transition-all duration-300 group cursor-pointer"
               >
-                {/* Category Badge */}
-                <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-                  {post.category}
-                </div>
+                {/* Image */}
+                {post.image && (
+                  <div className="h-48 overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+                
+                <div className="p-8">
+                  {/* Category Badge */}
+                  <div className="inline-flex items-center px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+                    {post.category}
+                  </div>
 
-                {/* Title */}
-                <h3 className="font-heading text-xl font-semibold text-primary mb-3 group-hover:text-primary-light transition-colors">
-                  {post.title}
-                </h3>
+                  {/* Title */}
+                  <h3 className="font-heading text-xl font-semibold text-primary mb-3 group-hover:text-primary-light transition-colors">
+                    {post.title}
+                  </h3>
 
-                {/* Excerpt */}
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {post.excerpt}
-                </p>
+                  {/* Excerpt */}
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {post.excerpt}
+                  </p>
 
-                {/* Meta Info */}
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-1">
-                      <Calendar size={16} />
-                      <span>{new Date(post.date).toLocaleDateString()}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Clock size={16} />
-                      <span>{post.readTime}</span>
+                  {/* Meta Info */}
+                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-1">
+                        <Calendar size={16} />
+                        <span>{new Date(post.date).toLocaleDateString()}</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Clock size={16} />
+                        <span>{post.readTime}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Read More */}
-                <div className="flex items-center text-primary font-medium group-hover:text-primary-light transition-colors">
-                  <span>Read More</span>
-                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  {/* Read More */}
+                  <div className="flex items-center text-primary font-medium group-hover:text-primary-light transition-colors">
+                    <span>Read More</span>
+                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </article>
             ))}

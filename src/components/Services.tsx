@@ -1,5 +1,7 @@
 import { User, Users, Heart, Briefcase, Brain, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import therapySessionImage from "@/assets/therapy-session.jpg";
+import servicesBrochureImage from "@/assets/services-brochure.jpg";
 
 const Services = () => {
   const services = [
@@ -61,6 +63,24 @@ const Services = () => {
               Comprehensive mental health services tailored to meet your unique needs. 
               We're here to support you every step of the way.
             </p>
+          </div>
+
+          {/* Services Images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div className="rounded-2xl overflow-hidden shadow-card">
+              <img 
+                src={therapySessionImage} 
+                alt="Professional therapy session" 
+                className="w-full h-64 object-cover"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-card">
+              <img 
+                src={servicesBrochureImage} 
+                alt="Greenoak Wellness Centre services" 
+                className="w-full h-64 object-cover"
+              />
+            </div>
           </div>
 
           {/* Services Grid */}
