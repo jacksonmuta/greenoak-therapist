@@ -12,8 +12,8 @@ const Payment = () => {
               Session Payments
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Simple, secure, and convenient payment options for your therapy sessions. 
-              We accept M-Pesa for easy mobile payments.
+              Simple, secure, and convenient payment options for your therapy
+              sessions. We accept M-Pesa for easy mobile payments.
             </p>
           </div>
 
@@ -26,15 +26,33 @@ const Payment = () => {
                   <Smartphone className="w-8 h-8 text-green-600" />
                 </div>
                 <div>
-                  <h3 className="font-heading text-xl font-semibold text-primary">M-Pesa Payment</h3>
-                  <p className="text-muted-foreground">Quick and secure mobile payment</p>
+                  <h3 className="font-heading text-xl font-semibold text-primary">
+                    M-Pesa Payment
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Quick and secure mobile payment
+                  </p>
                 </div>
               </div>
 
               <div className="bg-green-50 rounded-lg p-6 mb-6">
-                <h4 className="font-semibold text-green-800 mb-3">M-Pesa Till Number</h4>
+                <h4 className="font-semibold text-green-800 mb-3">
+                  M-Pesa Paybill Number
+                </h4>
                 <div className="text-center">
-                  <span className="text-3xl font-bold text-green-600">4027780</span>
+                  <span className="text-3xl font-bold text-green-600">
+                    {" "}
+                    400200
+                  </span>
+                </div>
+                <h4 className="font-semibold text-green-800 mb-3">
+                  M-Pesa Account Number
+                </h4>
+                <div className="text-center">
+                  <span className="text-3xl font-bold text-green-600">
+                    {" "}
+                    898837
+                  </span>
                 </div>
                 <p className="text-sm text-green-700 mt-2 text-center">
                   Use this till number to pay for your sessions
@@ -46,7 +64,12 @@ const Payment = () => {
                 <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
                   <li>Go to M-Pesa menu on your phone</li>
                   <li>Select "Pay Bill"</li>
-                  <li>Enter Till Number: <strong>4027780</strong></li>
+                  <li>
+                    Enter Paybill Number: <strong> 400200</strong>
+                  </li>
+                  <li>
+                    Enter Account Number: <strong> 898837</strong>
+                  </li>
                   <li>Enter session amount</li>
                   <li>Enter your M-Pesa PIN</li>
                   <li>Send confirmation to us</li>
@@ -61,8 +84,12 @@ const Payment = () => {
                   <CreditCard className="w-8 h-8 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-heading text-xl font-semibold text-primary">Other Options</h3>
-                  <p className="text-muted-foreground">Alternative payment methods</p>
+                  <h3 className="font-heading text-xl font-semibold text-primary">
+                    Other Options
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Alternative payment methods
+                  </p>
                 </div>
               </div>
 
@@ -82,7 +109,8 @@ const Payment = () => {
               </div>
 
               <p className="text-sm text-muted-foreground mt-4">
-                Contact us to discuss alternative payment arrangements if needed.
+                Contact us to discuss alternative payment arrangements if
+                needed.
               </p>
             </div>
           </div>
@@ -94,18 +122,30 @@ const Payment = () => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <div className="bg-card rounded-lg p-6 shadow-soft">
-                <h4 className="font-semibold text-primary mb-2">Individual Session</h4>
-                <div className="text-2xl font-bold text-foreground mb-2">KES 3,000</div>
+                <h4 className="font-semibold text-primary mb-2">
+                  Individual Session
+                </h4>
+                <div className="text-2xl font-bold text-foreground mb-2">
+                  KES 3,000
+                </div>
                 <p className="text-sm text-muted-foreground">60 minutes</p>
               </div>
               <div className="bg-card rounded-lg p-6 shadow-soft">
-                <h4 className="font-semibold text-primary mb-2">Couples Session</h4>
-                <div className="text-2xl font-bold text-foreground mb-2">KES 4,500</div>
+                <h4 className="font-semibold text-primary mb-2">
+                  Couples Session
+                </h4>
+                <div className="text-2xl font-bold text-foreground mb-2">
+                  KES 4,500
+                </div>
                 <p className="text-sm text-muted-foreground">90 minutes</p>
               </div>
               <div className="bg-card rounded-lg p-6 shadow-soft">
-                <h4 className="font-semibold text-primary mb-2">Group Session</h4>
-                <div className="text-2xl font-bold text-foreground mb-2">KES 2,000</div>
+                <h4 className="font-semibold text-primary mb-2">
+                  Group Session
+                </h4>
+                <div className="text-2xl font-bold text-foreground mb-2">
+                  KES 2,000
+                </div>
                 <p className="text-sm text-muted-foreground">90 minutes</p>
               </div>
             </div>
@@ -118,7 +158,8 @@ const Payment = () => {
           <div className="flex items-center justify-center space-x-3 mt-8 p-4 bg-primary/5 rounded-lg">
             <Shield className="w-5 h-5 text-primary" />
             <p className="text-sm text-muted-foreground">
-              All payments are secure and confidential. We never store your payment information.
+              All payments are secure and confidential. We never store your
+              payment information.
             </p>
           </div>
         </div>
