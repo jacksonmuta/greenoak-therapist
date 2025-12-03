@@ -12,12 +12,12 @@ const Contact = () => {
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Please fill in all required fields",
@@ -34,10 +34,12 @@ const Contact = () => {
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -51,8 +53,8 @@ const Contact = () => {
               Get In Touch
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready to take the first step? Contact us today to schedule your consultation 
-              or ask any questions about our services.
+              Ready to take the first step? Contact us today to schedule your
+              consultation or ask any questions about our services.
             </p>
           </div>
 
@@ -63,16 +65,20 @@ const Contact = () => {
                 <h3 className="font-heading text-2xl font-semibold text-primary mb-6">
                   Contact Information
                 </h3>
-                
+
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <Phone className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Phone</h4>
+                      <h4 className="font-semibold text-foreground mb-1">
+                        Phone
+                      </h4>
                       <p className="text-muted-foreground">+254 791 304 845</p>
-                      <p className="text-sm text-muted-foreground">Available Mon-Fri, 9AM-6PM</p>
+                      <p className="text-sm text-muted-foreground">
+                        Available Mon-Fri, 9AM-6PM
+                      </p>
                     </div>
                   </div>
 
@@ -81,9 +87,16 @@ const Contact = () => {
                       <Mail className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                      <p className="text-muted-foreground">greenoakwellness@gmail.com</p>
-                      <p className="text-sm text-muted-foreground">We respond within 24 hours</p>
+                      <h4 className="font-semibold text-foreground mb-1">
+                        Email
+                      </h4>
+                      <p className="text-muted-foreground">
+                        {" "}
+                        greenoakcentre@gmail.com✅
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        We respond within 24 hours
+                      </p>
                     </div>
                   </div>
 
@@ -92,9 +105,13 @@ const Contact = () => {
                       <MapPin className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Location</h4>
+                      <h4 className="font-semibold text-foreground mb-1">
+                        Location
+                      </h4>
                       <p className="text-muted-foreground">Nairobi, Kenya</p>
-                      <p className="text-sm text-muted-foreground">Online sessions available nationwide</p>
+                      <p className="text-sm text-muted-foreground">
+                        Online sessions available nationwide
+                      </p>
                     </div>
                   </div>
 
@@ -103,7 +120,9 @@ const Contact = () => {
                       <Clock className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground mb-1">Hours</h4>
+                      <h4 className="font-semibold text-foreground mb-1">
+                        Hours
+                      </h4>
                       <div className="text-muted-foreground space-y-1">
                         <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
                         <p>Saturday: 10:00 AM - 4:00 PM</p>
@@ -116,12 +135,15 @@ const Contact = () => {
 
               {/* Emergency Notice */}
               <div className="bg-card rounded-2xl p-6 shadow-card border-l-4 border-destructive">
-                <h4 className="font-semibold text-destructive mb-2">Crisis Support</h4>
+                <h4 className="font-semibold text-destructive mb-2">
+                  Crisis Support
+                </h4>
                 <p className="text-sm text-muted-foreground mb-3">
                   If you're experiencing a mental health crisis, please contact:
                 </p>
                 <p className="text-sm font-medium text-foreground">
-                  Emergency: 911 or 999<br />
+                  Emergency: 911 or 999
+                  <br />
                   Crisis Helpline: +254 722 178 177
                 </p>
               </div>
@@ -132,7 +154,7 @@ const Contact = () => {
               <h3 className="font-heading text-2xl font-semibold text-primary mb-6">
                 Send us a Message
               </h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -184,8 +206,8 @@ const Contact = () => {
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full bg-gradient-hero hover:opacity-90 py-3"
                 >
                   <Send className="w-4 h-4 mr-2" />

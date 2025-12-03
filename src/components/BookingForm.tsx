@@ -1,60 +1,111 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Calendar, Clock, User, Mail, Phone, MessageCircle } from "lucide-react";
+import {
+  Calendar,
+  Clock,
+  User,
+  Mail,
+  Phone,
+  MessageCircle,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const BookingForm = () => {
   const { toast } = useToast();
+  const [isSending, setIsSending] = useState(false);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     preferredDate: "",
     preferredTime: "",
-    message: ""
+    message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // -----------------------------
+  // Handle Input Change
+  // -----------------------------
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  // -----------------------------
+  // Handle Submit (EmailJS)
+  // -----------------------------
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic validation
+
     if (!formData.fullName || !formData.email || !formData.phone) {
       toast({
-        title: "Please fill in all required fields",
+        title: "Missing Required Fields",
+        description: "Please fill in your name, email, and phone number.",
         variant: "destructive",
       });
       return;
     }
 
-    // In a real app, you would send this to your backend
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Consultation Request Sent!",
-      description: "We'll get back to you within 24 hours to confirm your appointment.",
-    });
+    setIsSending(true);
 
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      preferredDate: "",
-      preferredTime: "",
-      message: ""
-    });
+    try {
+      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      console.log("Sending Email with:", { serviceID, templateID, publicKey });
+
+      await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          preferredDate: formData.preferredDate,
+          preferredTime: formData.preferredTime,
+          message: formData.message,
+        },
+        publicKey
+      );
+
+      toast({
+        title: "Consultation Request Sent!",
+        description: "We’ll get back to you within 24 hours.",
+      });
+
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        preferredDate: "",
+        preferredTime: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("EMAILJS ERROR:", error);
+
+      toast({
+        title: "Message Failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
+
+    setIsSending(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
+  // -----------------------------
+  // UI
+  // -----------------------------
   return (
     <section id="book-session" className="py-20 bg-gradient-soft">
       <div className="container mx-auto px-4">
@@ -65,27 +116,31 @@ const BookingForm = () => {
               Book a Consultation Call
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Take the first step towards better mental health. Schedule a confidential 
-              consultation to discuss your needs and how we can help.
+              Take the first step toward better mental health. Schedule a
+              private consultation to discuss your needs.
             </p>
           </div>
 
-          {/* Form */}
+          {/* Form Container */}
           <div className="bg-card rounded-2xl shadow-card p-8 md:p-12">
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Full Name */}
                 <div className="space-y-2">
-                  <Label htmlFor="fullName" className="text-base font-medium flex items-center space-x-2">
+                  <Label
+                    htmlFor="fullName"
+                    className="flex items-center gap-2 text-base font-medium"
+                  >
                     <User size={18} className="text-primary" />
-                    <span>Full Name *</span>
+                    Full Name *
                   </Label>
                   <Input
                     id="fullName"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    placeholder="Enter your full name"
+                    placeholder="Your full name"
                     className="h-12 text-base"
                     required
                   />
@@ -93,9 +148,12 @@ const BookingForm = () => {
 
                 {/* Email */}
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-base font-medium flex items-center space-x-2">
+                  <Label
+                    htmlFor="email"
+                    className="flex items-center gap-2 text-base font-medium"
+                  >
                     <Mail size={18} className="text-primary" />
-                    <span>Email Address *</span>
+                    Email Address *
                   </Label>
                   <Input
                     id="email"
@@ -103,7 +161,7 @@ const BookingForm = () => {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Enter your email address"
+                    placeholder="you@example.com"
                     className="h-12 text-base"
                     required
                   />
@@ -111,9 +169,12 @@ const BookingForm = () => {
 
                 {/* Phone */}
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-base font-medium flex items-center space-x-2">
+                  <Label
+                    htmlFor="phone"
+                    className="flex items-center gap-2 text-base font-medium"
+                  >
                     <Phone size={18} className="text-primary" />
-                    <span>Phone Number *</span>
+                    Phone Number *
                   </Label>
                   <Input
                     id="phone"
@@ -129,9 +190,12 @@ const BookingForm = () => {
 
                 {/* Preferred Date */}
                 <div className="space-y-2">
-                  <Label htmlFor="preferredDate" className="text-base font-medium flex items-center space-x-2">
+                  <Label
+                    htmlFor="preferredDate"
+                    className="flex items-center gap-2 text-base font-medium"
+                  >
                     <Calendar size={18} className="text-primary" />
-                    <span>Preferred Date</span>
+                    Preferred Date
                   </Label>
                   <Input
                     id="preferredDate"
@@ -145,9 +209,12 @@ const BookingForm = () => {
 
                 {/* Preferred Time */}
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="preferredTime" className="text-base font-medium flex items-center space-x-2">
+                  <Label
+                    htmlFor="preferredTime"
+                    className="flex items-center gap-2 text-base font-medium"
+                  >
                     <Clock size={18} className="text-primary" />
-                    <span>Preferred Time</span>
+                    Preferred Time
                   </Label>
                   <Input
                     id="preferredTime"
@@ -162,35 +229,38 @@ const BookingForm = () => {
 
               {/* Message */}
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-base font-medium flex items-center space-x-2">
+                <Label
+                  htmlFor="message"
+                  className="flex items-center gap-2 text-base font-medium"
+                >
                   <MessageCircle size={18} className="text-primary" />
-                  <span>Anything you'd like me to keep in mind</span>
+                  Anything you'd like me to know
                 </Label>
                 <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Share any specific concerns, goals, or questions you have..."
-                  className="min-h-[120px] text-base resize-none"
+                  placeholder="Share concerns, goals, questions..."
+                  className="min-h-[120px] resize-none text-base"
                 />
               </div>
 
               {/* Submit Button */}
               <div className="pt-4">
-                <Button 
+                <Button
                   type="submit"
                   size="lg"
                   className="w-full bg-gradient-hero hover:opacity-90 text-lg font-semibold py-4 shadow-float"
+                  disabled={isSending}
                 >
-                  Schedule My Consultation
+                  {isSending ? "Sending..." : "Schedule My Consultation"}
                 </Button>
               </div>
 
               {/* Privacy Note */}
               <p className="text-sm text-muted-foreground text-center mt-4">
-                Your information is completely confidential and secure. We'll only use it to 
-                contact you about your consultation.
+                Your information is confidential and securely handled.
               </p>
             </form>
           </div>
